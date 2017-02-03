@@ -7,8 +7,3 @@ fork of : https://github.com/websockets/ws/tree/master/examples
 fork of : https://github.com/Links2004/arduinoWebSockets/blob/master/examples/WebSocketClientSSL/WebSocketClientSSL.ino
 
 The timer feature sends a message each 5 seconds to the SSL node server
-
-
-First Header | Second Header
---------- | -------------
-Content from cell 1 | Content from cell 2
