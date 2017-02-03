@@ -2,7 +2,7 @@
 
 1. Create key and certificate with openssl : http://gghe-informatique.blogspot.fr/2012/01/creer-un-certificat-numerique-ssl-auto.html
 
-To make the certificate working on your local network you MUST put your IP adress when openssl asks your "Common Name (e.g. server FQDN or YOUR name)"
+  - **To make the certificate working on your local network you MUST put your IP adress when openssl asks your "Common Name (e.g. server FQDN or YOUR name)"**
 
 2. Run the node.js server
 
