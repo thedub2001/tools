@@ -39,15 +39,6 @@
     // passing or reference to web server so WS would knew port and SSL capabilities
   var wss = new WebSocketServer({ server: app });
 
-wss.broadcast = function broadcast(data) {
-  wss.clients.forEach(function each(client) {
-    if (client.readyState === WebSocketServer.OPEN) {
-      console.log("Broadcasting "+data+" to "+wss.client);
-      client.send(data);
-    }
-  });
-};
-
   wss.on('connection', function (wsConnect) {
 
     console.log(wss);
@@ -55,12 +46,3 @@ wss.broadcast = function broadcast(data) {
       console.log(message);
     });
   });
-
-setInterval(function () {
-    wss.broadcast('hello');
-    //console.log("Broadcas");
-}, 5000);
-
-
-
-
