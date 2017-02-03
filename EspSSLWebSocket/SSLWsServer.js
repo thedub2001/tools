@@ -7,8 +7,8 @@
   var cfg = {
     ssl: true,
     port: 1337,
-    ssl_key: '../keys/TestCA.key',
-    ssl_cert: '../keys/TestCA.crt'
+    ssl_key: 'TestCA.key',
+    ssl_cert: 'TestCA.crt'
   };
 
   var httpServ = (cfg.ssl) ? require('https') : require('http');
