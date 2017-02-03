@@ -1,3 +1,5 @@
+This arduino sketch example comes from [here](https://github.com/esp8266/Arduino/tree/4897e0006b5b0123a2fa31f67b14a3fff65ce561/libraries/ESP8266WiFi/examples/HTTPSRequest). Thanks to all who develops this Arduino core for ESP8266 !
+
 **The reason I wrote this readme is the diffuclty to understand why my secured node.js local server was refused by the Esp8266.**
 
 The exemple is working only if your IP address is 192.168.1.12. If not go trough the steps 1 and 3
