@@ -4,8 +4,8 @@ var ip = require("ip");
 var port=8010;
 
 const options = {
-  key: fs.readFileSync('../keys/Test.key'),
-  cert: fs.readFileSync('../keys/Test.crt'),
+  key: fs.readFileSync('Test.key'),
+  cert: fs.readFileSync('Test.crt'),
 passphrase: 'testpass'
 };
 
