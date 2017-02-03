@@ -96,8 +96,9 @@ void setup() {
 
 void loop() {
     webSocket.loop();
-      if (tick == true) { 
-        webSocket.sendTXT(String(millis()));
+      if (tick == true) {
+        String millisStr = String(millis(), DEC); 
+        webSocket.sendTXT(millisStr);
+        tick=false;
 }
-
-
+}
