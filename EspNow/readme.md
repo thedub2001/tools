@@ -7,11 +7,11 @@
 
 ### Installation
 1. Slave ESP
-  . Upload and run the sketch **meshSlave.ino**
-  . Write down the AP MAC module address (printed in the serial interface)
+  * Upload and run the sketch **meshSlave.ino**
+  * Write down the AP MAC module address (printed in the serial interface)
 2. Master ESP
-  . Edit the sketch **meshMaster.ino**
-  . At line 17, enter the AP MAC address of the slave ESP you just writted down (uint8_t mac_addr[6] = {0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA};)
+  * Edit the sketch **meshMaster.ino**
+  * At line 17, enter the AP MAC address of the slave ESP you just writted down (uint8_t mac_addr[6] = {0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA};)
   . Upload and run
   
   
@@ -20,4 +20,5 @@ https://espressif.com/sites/default/files/documentation/esp-now_user_guide_en.pd
 
 ### Help and examples
 https://github.com/HarringayMakerSpace/IoT/tree/master/ESP-Now
+
 http://www.esploradores.com/practica-6-conexion-esp-now/
