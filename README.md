@@ -15,4 +15,4 @@ This module allows you to :
   2. Connect as client with an ESP8266 with Arduino core
 
 ### EspNow
-This module allows you to connect two or more ESPs into a mesh using Wifi with a special Espressif protocol. This protocol avoid the use of SSID and PWD and has a quicker pairing time (ideal for battery powered ESP modules).
+This module allows you to connect two or more ESPs into a mesh using Wifi with a special Espressif protocol. This protocol avoids the use of SSID and PWD and has a quicker pairing time (ideal for battery powered modules).
