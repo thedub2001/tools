@@ -12,7 +12,7 @@
 2. Master ESP
   * Edit the sketch **meshMaster.ino**
   * At line 17, enter the AP MAC address of the slave ESP you just writted down (uint8_t mac_addr[6] = {0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA};)
-  . Upload and run
+  * Upload and run
   
   
 ### References
