@@ -80,6 +80,6 @@ void setup() {
       uint8_t data[sizeof(ED)]; 
       memcpy(data, &ED, sizeof(ED));
       uint8_t len = sizeof(data);
-      esp_now_send(da, data, len); // first argument to "NULL" will brodcast data to all paired ESPs
+      esp_now_send(mac_addr, data, len); // first argument to "NULL" will brodcast data to all paired ESPs
     }
   }
