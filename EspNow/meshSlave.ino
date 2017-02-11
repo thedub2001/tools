@@ -27,9 +27,9 @@ void setup() {
 
   esp_now_register_recv_cb([](uint8_t *mac, uint8_t *data, uint8_t len) {
 
-    char MACmaestro[6];
-    sprintf(MACmaestro, "%02X:%02X:%02X:%02X:%02X:%02X",mac[0],mac[1],mac[2],mac[3],mac[4],mac[5]);
-    Serial.print("Reception from ESP MAC: "); Serial.print(MACmaestro);
+    char MACmaster[6];
+    sprintf(MACmaster, "%02X:%02X:%02X:%02X:%02X:%02X",mac[0],mac[1],mac[2],mac[3],mac[4],mac[5]);
+    Serial.print("Reception from ESP MAC: "); Serial.print(MACmaster);
 
     DATAS ED;
     memcpy(&ED, data, sizeof(ED));
@@ -42,3 +42,4 @@ void setup() {
 
 void loop() {
 }
+
