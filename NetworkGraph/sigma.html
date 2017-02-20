@@ -145,8 +145,12 @@ s = new sigma({
 });
 
 // Start the ForceAtlas2 algorithm when nex data is comming:
-s.startForceAtlas2({worker: true, barnesHutOptimize: false,gravity :0.5 ,adjustSizes :false,edgeWeightInfluence :0,slowDown:100}); 
-//s.killForceAtlas2 few seconds later (once the sigma graph is stabilized)
+s.startForceAtlas2({worker: true, barnesHutOptimize: false,gravity :0.5 ,adjustSizes :false,edgeWeightInfluence :0,slowDown:100});
+
+setTimeout(function () { //We stop ForceAtlas2 once the sigma graph is stabilized
+    s.killForceAtlas2();
+}, 8000); 
+
 </script>
 </body>
 </html>
