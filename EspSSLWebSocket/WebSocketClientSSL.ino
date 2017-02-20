@@ -17,6 +17,10 @@
 
 #include <Hash.h>
 
+const char* fingerprint = "6B 40 98 95 B7 8C BB E7 E5 DE 0D 17 D1 DB 21 67 70 FF 5A 5A";
+const char* protocol= "arduino";
+unsigned long lastDisco;
+
 ESP8266WiFiMulti WiFiMulti;
 WebSocketsClient webSocket;
   os_timer_t myTimer;
@@ -32,20 +36,21 @@ void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
     switch(type) {
         case WStype_DISCONNECTED:
             USE_SERIAL.printf("[WSc] Disconnected!\n");
+            lastDisco=millis();
             break;
         case WStype_CONNECTED:
             {
                 USE_SERIAL.printf("[WSc] Connected to url: %s\n",  payload);
-				
-			    // send message to server when Connected
-				webSocket.sendTXT("Connected");
+        
+          // send message to server when Connected
+        webSocket.sendTXT("Connected");
             }
             break;
         case WStype_TEXT:
             USE_SERIAL.printf("[WSc] get text: %s\n", payload);
 
-			// send message to server
-			// webSocket.sendTXT("message here");
+      // send message to server
+      // webSocket.sendTXT("message here");
             break;
         case WStype_BIN:
             USE_SERIAL.printf("[WSc] get binary length: %u\n", length);
@@ -85,7 +90,11 @@ void setup() {
         delay(100);
     }
 
-    webSocket.beginSSL("192.168.1.12", 1337);
+   
+    //webSocket.beginSSL("78.218.62.97", 9001,"",fingerprint,protocol);
+    webSocket.beginSSL("78.218.62.97", 9001);
+    Serial.print("fingerprint P : ");
+    Serial.println(fingerprint);
     webSocket.onEvent(webSocketEvent);
 
       tick = false;
@@ -95,10 +104,15 @@ void setup() {
 }
 
 void loop() {
-    webSocket.loop();
+
+
+  if (lastDisco==1 || lastDisco<millis()-5000){ // prevent esp from trying to connect at each loop and prevent form comapring millis at each loop when client is connected
+    webSocket.loop(); //timeout before reconnection if disconnected
+    lastDisco=1;
+  }
       if (tick == true) {
         String millisStr = String(millis(), DEC); 
-        webSocket.sendTXT(millisStr);
+        webSocket.sendTXT("Hello : " + millisStr);
         tick=false;
 }
 }
