@@ -2,4 +2,4 @@
 
   * The network graph will load the "data" json (line 27)
   * The ForceAtlas2 pluggin will reorganize the graph (line 148)
-  * Stop the pluggin when the graph is stabilized (10 seconds later) by using the killForceAtlas2 method
+  * The pluggin stops when the graph is stabilized (8 seconds later) by using the killForceAtlas2() function
