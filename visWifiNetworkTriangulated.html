@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+  <title>Network | Triangulation</title>
+
+  <script type="text/javascript" src="http://visjs.org/dist/vis.js"></script>
+  <link href="http://visjs.org/dist/vis-network.min.css" rel="stylesheet" type="text/css" />
+
+  <style type="text/css">
+    #mynetwork {
+      width: 600px;
+      height: 400px;
+      border: 1px solid lightgray;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+  Create a triangulated network. <br>
+  Modules : Repulsion | Edge length | Add node/edge
+</p>
+
+<div id="mynetwork"></div>
+
+<h1>Adjust</h1>
+<table>
+    <tr>
+        <td>
+            <h2>Node</h2>
+            <table>
+                <tr>
+                    <td></td>
+                    <td><label for="node-id">Id</label></td>
+                    <td><input id="node-id" type="text" value="6"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><label for="node-label">Label</label></td>
+                    <td><input id="node-label" type="text" value="Node 6"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Action</td>
+                    <td>
+                        <button id="node-add" onclick="addNode();">Add</button>
+                        <button id="node-update" onclick="updateNode();">Update</button>
+                        <button id="node-remove" onclick="removeNode();">Remove</button>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <h2>Edge</h2>
+            <table>
+                <tr>
+                    <td></td>
+                    <td><label for="edge-id">Id</label></td>
+                    <td><input id="edge-id" type="text" value="5"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><label for="edge-from">From</label></td>
+                    <td><input id="edge-from" type="text" value="3"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><label for="edge-to">To</label></td>
+                    <td><input id="edge-to" type="text" value="4"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><label for="edge-length">Length</label></td>
+                    <td><input id="edge-length" type="text" value="100">length=abs(SignalStrength[dB]);SignalStrength[dB]=(SignalStrength_AtoB[dB]+SignalStrength_BtoA[dB])/2</td>
+                </tr>
+                <tr>                  
+                    <td></td>
+                    <td>Action</td>
+                    <td>
+                        <button id="edge-add" onclick="addEdge();">Add</button>
+                        <button id="edge-update" onclick="updateEdge();">Update</button>
+                        <button id="edge-remove" onclick="removeEdge();">Remove</button>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+</table>
+
+<script type="text/javascript">
+  // create an array with nodes
+  var nodes = new vis.DataSet([
+    {id: 1, label: 'Node 1'},
+    {id: 2, label: 'Node 2'},
+    {id: 3, label: 'Node 3'},
+    {id: 4, label: 'Node 4'},
+    {id: 5, label: 'Node 5'},
+    {id: 6, label: 'Node 6'}
+  ]);
+
+  // create an array with edges
+  var edges = new vis.DataSet([
+    {from: 1, to: 3,color:{color:'red'},length: 300}, // length = la valeur absolue de la puissance du signal wifi entre 1 et 3 (autrement dit une moyenne du signal de 1vers3 et de 3vers1)
+    {from: 1, to: 2,color:{color:'red'},length: 100},
+    {from: 2, to: 3,color:{color:'blue'},length: 300},
+    {from: 1, to: 4,color:{color:'red'},length: 300},
+    {from: 2, to: 4,color:{color:'blue'},length: 100},
+    {from: 3, to: 4,color:{color:'blue'},length: 300},
+    {from: 1, to: 5,color:{color:'red'},length: 500},
+    {from: 3, to: 5,color:{color:'blue'},length: 500},
+    {from: 4, to: 6,color:{color:'yellow'},length: 100},
+
+  ]);
+
+  // create a network
+  var container = document.getElementById('mynetwork');
+  var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    edges: {"smooth": false, // represente le comportement physique d'une onde
+    hoverWidth: function (width) {return width+11;}
+    },
+    interaction: {hover: true},
+      
+      "physics": {
+    "repulsion": {
+      "nodeDistance": 1000 //Les nodes qui ne sont pas reliés (cad qui ne se voient pas) sont le plus loin possible les uns des autres
+    },
+    "Velocity": 5,
+    "solver": "repulsion" // nécessaire pour nodeDistance
+  }
+    
+  };
+  var network = new vis.Network(container, data, options);
+
+  function addNode() {
+      try {
+          nodes.add({
+              id: document.getElementById('node-id').value,
+              label: document.getElementById('node-label').value
+          });
+      }
+      catch (err) {
+          alert(err);
+      }
+  }
+
+  function updateNode() {
+      try {
+          nodes.update({
+              id: document.getElementById('node-id').value,
+              label: document.getElementById('node-label').value
+          });
+      }
+      catch (err) {
+          alert(err);
+      }
+  }
+  function removeNode() {
+      try {
+          nodes.remove({id: document.getElementById('node-id').value});
+      }
+      catch (err) {
+          alert(err);
+      }
+  }
+
+  function addEdge() {
+      try {
+          edges.add({
+              id: document.getElementById('edge-id').value,
+              from: document.getElementById('edge-from').value,
+              to: document.getElementById('edge-to').value
+          });
+      }
+      catch (err) {
+          alert(err);
+      }
+  }
+  function updateEdge() {
+      try {
+          edges.update({
+              id: document.getElementById('edge-id').value,
+              from: document.getElementById('edge-from').value,
+              to: document.getElementById('edge-to').value,
+              length: document.getElementById('edge-length').value
+          });
+      }
+      catch (err) {
+          alert(err);
+      }
+  }
+  function removeEdge() {
+      try {
+          edges.remove({id: document.getElementById('edge-id').value});
+      }
+      catch (err) {
+          alert(err);
+      }
+  }
+</script>
+
+
+</body>
+</html>
