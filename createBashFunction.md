@@ -6,6 +6,11 @@ date1(){
   date -d @$1
 }
 ```
+###  Export your function to make it available to super user
+Write this code at the end of the .bashrc file
+```
+export -f date1
+```
 ### Save your file
 ```
 Ctrl+X
@@ -18,4 +23,8 @@ source ~/.bashrc
 ### Test your new function
 ```bash
 date1 132456
+```
+### Test your new function in super user
+```bash
+su -c date1 123456
 ```
