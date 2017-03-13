@@ -24,7 +24,7 @@ source ~/.bashrc
 ```bash
 date1 132456
 ```
-### Test your new function in super user
+### Test your new function in super user mode
 ```bash
 su -c date1 123456
 ```
