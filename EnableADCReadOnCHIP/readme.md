@@ -24,6 +24,7 @@ adcRead
 
 ### Add adcEnable to startup
 Because the CHIP initialize the 1V8 pin when booting we need to initialize it back in ADC mode
+
 Edit the cron file
 ```bash
 crontab -e
