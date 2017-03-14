@@ -1,0 +1,5 @@
+#!/bin/bash
+
+    /usr/sbin/i2cset -f -y 0 0x34 0x83 0x80 # disable ADC input on GPIO0
+    /usr/sbin/i2cset -f -y 0 0x34 0x90 0x03
+    /usr/sbin/i2cset -f -y 0 0x34 0x91 0x00 #calculation is output voltage = 1.8v $

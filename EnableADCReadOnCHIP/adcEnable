@@ -1,0 +1,8 @@
+#!/bin/bash
+
+    # docs: http://dl.linux-sunxi.org/AXP/AXP209_Datasheet_v1.0en.pdf
+    /usr/sbin/i2cset -f -y 0 0x34 0x83 0x80 # disable ADC input on GPIO0
+    /usr/sbin/i2cset -f -y 0 0x34 0x90 0x04 # set GPIO0 to 12 bit ADC input
+    /usr/sbin/i2cset -f -y 0 0x34 0x85 0x01 # set ADC input range to 0.7-2.7475v
+    # /usr/sbin/i2cset -f -y 0 0x34 0x85 0x00 # set ADC input range to 0-2v
+    /usr/sbin/i2cset -f -y 0 0x34 0x83 0x88 # enable ADC input on GPIO0

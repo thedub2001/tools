@@ -1,0 +1,9 @@
+#!/bin/bash
+
+    # read GPIO0 as 12-bit ADC:
+    # get the ADC input range: 0.7v offset from register 85H
+    p=$(i2cget -f -y 0 0x34 0x85 b)
+    rhigh=$(i2cget -f -y 0 0x34 0x64 b)
+    rlow=$(expr substr "$(i2cget -f -y 0 0x34 0x65 b)" 4 1)
+    r="${rhigh}${rlow}"
+    echo $(( (((r *10000)/4096)*2)+p*7000 )) # bash can perform HEX arithmetic ope$
