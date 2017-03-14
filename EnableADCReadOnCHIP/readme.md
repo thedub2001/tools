@@ -33,3 +33,6 @@ Add this line at the end of the file
 ```bash
 @reboot adcEnable
 ```
+### Create a script to automate readings and print a liveChart to the terminal
+Follow the steps at
+https://github.com/thedub2001/tools/tree/master/gnuplotTerminalLivechart
