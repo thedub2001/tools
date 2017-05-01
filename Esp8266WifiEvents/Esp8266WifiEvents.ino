@@ -1,3 +1,8 @@
+// http://www.esp8266.com/viewtopic.php?p=30091
+// https://github.com/esp8266/Arduino/pull/2119
+// https://github.com/gmag11/NtpClient/blob/master/examples/NTPClientESP8266/NTPClientESP8266.ino
+
+
 #include <ESP8266WiFi.h>
 // include plain C library
 extern "C" {
@@ -8,7 +13,6 @@ extern "C" {
 #define YOUR_WIFI_PASSWD "BJX57NGKBW"
 #define ONBOARDLED 2 // Built in LED on ESP-12/ESP-07
 
-boolean test=false;
 boolean waitingDHCP=false;
 char last_mac[18];
 
@@ -59,18 +63,14 @@ void setup() {
 
 void loop() {
 
-  test=!test;
-
-  Serial.println(test ? "test=false " : "test=true ");
-
   if (waitingDHCP) {
-    connectedDevices();
+    newConnectedDevice();
   }
 
   delay(2000);
 }
 
-void connectedDevices() {
+void newConnectedDevice() {
 
   struct station_info *station_list = wifi_softap_get_station_info();
 
