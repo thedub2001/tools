@@ -31,7 +31,6 @@ void onNewStation(WiFiEventSoftAPModeStationConnected sta_info) {
   struct station_info *stat_info;
   struct ip_addr *ipaddr;
   Serial.println("New Station :");
-  //Serial.printf("dst.mac: %02X:%02X:%02X:%02X:%02X:%02X\n", MAC2STR(sta_info.mac));
   sprintf(last_mac,"%02X:%02X:%02X:%02X:%02X:%02X", MAC2STR(sta_info.mac));
   Serial.println(last_mac);
   Serial.printf("dst.aid: %d\n", sta_info.aid); //number of connected stations
