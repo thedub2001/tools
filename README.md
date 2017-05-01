@@ -1,6 +1,9 @@
 # tools
 Usefull tools Blog
 
+### booleanTestInsideSerialPrint.ino
+This sketch shows the use of boolean test inside the Serial.print() instance
+
 ### hexStringToString.ino
 This sketch passes a hexadecimal value contained into a String variable into a plain text String
 
