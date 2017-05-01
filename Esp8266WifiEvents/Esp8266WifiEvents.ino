@@ -1,8 +1,3 @@
-// http://www.esp8266.com/viewtopic.php?p=30091
-// https://github.com/esp8266/Arduino/pull/2119
-// https://github.com/gmag11/NtpClient/blob/master/examples/NTPClientESP8266/NTPClientESP8266.ino
-
-
 #include <ESP8266WiFi.h>
 // include plain C library
 extern "C" {
