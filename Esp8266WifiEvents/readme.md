@@ -1,4 +1,6 @@
 ## New events list (WiFi.onEvent is deprecated)
+onModeChange
+
 onStationModeConnected
 
 onStationModeDisconnected
@@ -12,6 +14,8 @@ onStationModeDHCPTimeout
 onSoftAPModeStationConnected
 
 onSoftAPModeStationDisconnected
+
+onSoftAPModeProbeRequestReceived
 
 https://github.com/esp8266/Arduino/pull/2119
 
