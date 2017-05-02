@@ -4,8 +4,8 @@ extern "C" {
 #include "user_interface.h"
 }
 
-#define YOUR_WIFI_SSID "NUMERICABLE-3DA4"
-#define YOUR_WIFI_PASSWD "BJX57NGKBW"
+#define YOUR_WIFI_SSID "******"
+#define YOUR_WIFI_PASSWD "******"
 #define ONBOARDLED 2 // Built in LED on ESP-12/ESP-07
 
 boolean waitingDHCP=false;
