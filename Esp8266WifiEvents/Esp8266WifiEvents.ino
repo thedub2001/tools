@@ -88,8 +88,8 @@ void loop() {
   delay(2000);
 }
 
-// function that writes in cb variable the IP address related to device MAC address
-// true if IP exists, false if DHCP is not ready or bad MAC address
+// Function that writes in the cb variable the IP address related to the device MAC address
+// returned value is true if IP exists, false if DHCP is not ready or the MAC address is not part of the connected devices
 
 boolean deviceIP(char* mac_device, String &cb) {
 
