@@ -15,6 +15,8 @@ onSoftAPModeStationDisconnected
 
 https://github.com/esp8266/Arduino/pull/2119
 
+https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WiFi/src/ESP8266WiFiGeneric.h
+
 ## Links
 http://www.esp8266.com/viewtopic.php?p=30091
 
