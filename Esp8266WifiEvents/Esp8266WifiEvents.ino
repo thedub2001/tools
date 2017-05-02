@@ -11,6 +11,7 @@ extern "C" {
 boolean waitingDHCP=false;
 char last_mac[18];
 
+ // ----- Event functions -----
 
 // Manage IP attribution from station we are connected to
 void onSTAGotIP(WiFiEventStationModeGotIP ipInfo) {
@@ -45,7 +46,7 @@ void onLeaveStation(WiFiEventSoftAPModeStationDisconnected sta_info) {
 }
 
 // Manage stations asking for access points list
-void onProbeRequest (WiFiEventSoftAPModeProbeRequestReceived sta_info) {
+void onProbeRequest(WiFiEventSoftAPModeProbeRequestReceived sta_info) {
   char prob_mac[18];
   Serial.println("Probe Request :");
   sprintf(prob_mac,"%02X:%02X:%02X:%02X:%02X:%02X", MAC2STR(sta_info.mac));
@@ -87,6 +88,9 @@ void loop() {
   delay(2000);
 }
 
+// function that writes in cb variable the IP address related to device MAC address
+// true if IP exists, false if DHCP is not ready or bad MAC address
+
 boolean deviceIP(char* mac_device, String &cb) {
 
   struct station_info *station_list = wifi_softap_get_station_info();
@@ -109,6 +113,7 @@ boolean deviceIP(char* mac_device, String &cb) {
   return false;
 }
 
+// Function that returns devices connected to Esp access point in json format
 String deviceList() {
   String list="[";
   struct station_info *station_list = wifi_softap_get_station_info();
